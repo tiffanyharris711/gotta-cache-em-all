@@ -1,5 +1,6 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -7,10 +8,11 @@ from sqlalchemy import create_engine, func
 
 from flask import Flask, jsonify
 
+
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///Resources/pokemonGo.sqlite", echo=False)
+engine = create_engine("sqlite:///pokemonGo.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -18,36 +20,35 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Save references to each table
-NameTable = Base.classes.tbl_pokemon_names
+Pokemon_Names_Table = Base.classes.tablename
 
-# Create our session (link) from Python to the DB
-session = Session(engine)
 
 #################################################
 # Flask Setup
 #################################################
 app = Flask(__name__)
 
+
 #################################################
 # Flask Routes
 #################################################
 
-@app.route("/")
-def welcome():
-    return (
-        f"Welcome to the Pokemon Go Analysis API!<br/>"
-        f"Available Routes:<br/>"
-        f"/api/v1.0/names<br/>"
-    )
+# @app.route("/")
+# def welcome():
+#     return (
+#         f"Welcome to the Pokemon Go Analysis API!<br/>"
+#         f"Available Routes:<br/>"
+#         f"/api/v1.0/names<br/>"
+#     )
 
 
 @app.route("/api/v1.0/names")
 def names():
     """Return a list of Pokemon Go Names"""
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
     
-    results = session.query(NameTable.id).\
-        (NameTable.name).\
-        filter(NameTable.id== '25').all()
+    results = session.query(Pokemon_Names_Table.id).all()
 
-    temps = list(np.ravel(results))
-    return jsonify(temps=temps)
+    # all_names = list(np.ravel(results))
+    return jsonify(results)

@@ -10,10 +10,11 @@
 
     <!-- Boostrap Stylesheet -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" media="screen">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
     <!-- Our own CSS stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css" media="screen">
-
   </head>
 
   <body>
@@ -30,9 +31,9 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <div class="col-xs-9 phone-nav">
+            <!-- <div class="col-xs-9 phone-nav">
               <a class="navbar-brand" href="#" id="logo">Pokemon Go</a>
-            </div>
+            </div> -->
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,14 +42,14 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                 <li><a href=" ">Option 1</a></li>
-                  <li><a href=" ">Option 2</a></li>
-                  <li><a href=" ">Option 3</a></li>
-                  <li><a href=" ">Option 4</a></li>
+                 <li><a href="">Option 1</a></li>
+                  <li><a href="">Option 2</a></li>
+                  <li><a href="">Option 3</a></li>
+                  <li><a href="">Option 4</a></li>
                 </ul>
               </li>
-              <li><a href=" ">Comparison</a></li>
-              <li><a href=" ">Data</a></li>
+              <li><a href="">Comparison</a></li>
+              <li><a href="">Data</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div>
@@ -56,14 +57,50 @@
     </nav>
     <!-- End of navbar -->
 
-    <!-- Start of container -->
-    <div class="container">
+    <!--Start of title container -->
+    <div class="container-fluid">
       <section class="row">
-        <div class="col-md-8">
+        <img class="col-md-8">
+          <img src="./images/title.png" class="center">
+        </div>
+      </section>
+    </div>
+    <!--End of title container-->
+
+    <!-- Start of container -->
+    <div class="container-fluid">
+      <section class="row">
+        <div class="col-md-2">
+          <aside class="filters">
+            <div class="panel panel-default">
+              <div class="panel-heading">Filter Search</div>
+              <div class="panel-body">
+                <div class="form-group">
+                  <ul class="list-group" id="filters">
+                    <li class="filter list-group-item">
+                      <label for="character">Select a Character</label>
+                      <input class="form-control" id="character" type="text" placeholder="Pikachu">
+                    </li>
+                    <li class="filter list-group-item">
+                      <label for="formType">Select a Form Type</label>
+                      <input class="form-control" id="formType" type="text" placeholder="Grass">
+                    </li>
+                    <li class="filter list-group-item">
+                      <label for="state">Something Else Here</label>
+                      <input class="form-control" id="state" type="text" placeholder="Something">
+                    </li>                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="col-md-6">
           <article class="description-content">
-            <h1 class="description-header">Header Description</h1>
+            <h1 class="description-header">Character Description</h1>
             <hr class="description-hr"/>
-            <img src=" " alt="" id="description-image"/>
+            <img src="https://pokeres.bastionbot.org/images/pokemon/25.png" alt="" id="description-image"/>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis repellat illo pariatur possimus fugiat? Ipsum fugit iure, aspernatur quidem ipsam libero exercitationem consequuntur asperiores at quod cupiditate illum vitae, delectus commodi tempore, iste culpa. Dignissimos commodi temporibus necessitatibus dicta eos.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas in similique asperiores magni nemo obcaecati quae consequatur eos ullam dolorem, fugiat ex vel rem exercitationem repudiandae sint itaque doloremque pariatur omnis voluptates laboriosam non. In eius voluptatum nemo mollitia eos.</p>
           </article>
@@ -73,10 +110,10 @@
           <!-- Start of Visualizations imageNav Area -->
           <section id="imageNav-area">
             <div class="imageNav-content">
-              <h2 class="imageNav-header">Visualizations</h2>
+              <h2 class="imageNav-header">Graph Here</h2>
               <hr />
               <div id="images">
-                
+                <img src="./images/from_bao.png" width=75%> 
               </div>
             </div>
           </section>
@@ -86,6 +123,7 @@
       </section>
     </div>
     <!-- End of container -->
+    
 
     <!-- Start of footer -->
     <footer class="footer navbar-fixed-bottom">
@@ -101,6 +139,7 @@
 
     <!-- Bootstrap CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./assets/js/logic.js"></script>
   </body>
 
 </html>

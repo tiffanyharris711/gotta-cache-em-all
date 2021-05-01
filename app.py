@@ -1,5 +1,5 @@
 import pandas as pd
-
+import numpy as np
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -44,12 +44,10 @@ def welcome():
 @app.route("/api/v1.0/names")
 def names():
     """Return a list of Pokemon Go Names"""
-    print("Server received request for 'About' page...")
-    return "Welcome to my 'About' page!"
-    # list_of_names = session.query(NameTable.id, NameTable.name).limit(5).all()
+    
+    results = session.query(NameTable.id).\
+        (NameTable.name).\
+        filter(NameTable.id== '25').all()
 
-    # list_names = {id in list_of_names, name in list_of_names}
-    # return jsonify(list_names)
-
-if __name__ == '__main__':
-    app.run()
+    temps = list(np.ravel(results))
+    return jsonify(temps=temps)

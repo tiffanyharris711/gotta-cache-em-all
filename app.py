@@ -23,7 +23,7 @@ Bootstrap(app)
 @app.route("/")
 def index():
     print('Hello')
-    return render_template("index2.html")
+    return render_template("index.html")
 
 @app.route("/api/v1/names")
 def names():
@@ -58,4 +58,4 @@ def base_stats():
     return jsonify(results)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

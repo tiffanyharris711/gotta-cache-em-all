@@ -84,14 +84,14 @@
                       <label for="characterid">Enter Character ID</label>
                       <input class="form-control" id="characterid" type="text" placeholder="Pikachu">
                     </li>
-                    <li class="filter list-group-item">
+                    <!-- <li class="filter list-group-item">
                       <label for="formType">Select a Form Type</label>
                       <input class="form-control" id="formType" type="text" placeholder="Grass">
                     </li>
                     <li class="filter list-group-item">
                       <label for="state">Something Else Here</label>
                       <input class="form-control" id="state" type="text" placeholder="Something">
-                    </li>                    
+                    </li>                     -->
                   </ul>
                 </div>
               </div>
@@ -143,7 +143,9 @@
 
     <!-- Bootstrap CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./assets/js/logic.js"></script>
+    <!-- <script type="text/javascript" src="./assets/js/logic.js"></script> -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script type="text/javascript" src="{{url_for('.static',filename='logic.js')}}"></script>
   </body>
 
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="shortcut icon" href="#">
     <title>Pokemon Go Visualization Dashboard</title>
 
     <!-- Bootstrap Stylesheet -->
@@ -82,7 +82,9 @@
                   <ul class="list-group" id="filters">
                     <li class="filter list-group-item">
                       <label for="characterid">Enter Character ID</label>
-                      <input class="form-control" id="characterid" type="text" placeholder="Pikachu">
+                      <!-- <input class="form-control" id="characterid" type="text" placeholder="Pikachu"> -->
+                      <select id="selDataset" onchange="optionChanged(this.value)"></select>
+
                     </li>
                     <!-- <li class="filter list-group-item">
                       <label for="formType">Select a Form Type</label>
@@ -103,7 +105,9 @@
           <article class="description-content">
             <h1 class="description-header">Character Description</h1>
             <hr class="description-hr"/>
-            <img src="https://pokeres.bastionbot.org/images/pokemon/25.png" alt="" id="description-image"/>
+              <svg id='character-image'>
+                <!-- <img src="https://pokeres.bastionbot.org/images/pokemon/25.png" alt="" id="description-image"/> -->
+              </svg>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis repellat illo pariatur possimus fugiat? Ipsum fugit iure, aspernatur quidem ipsam libero exercitationem consequuntur asperiores at quod cupiditate illum vitae, delectus commodi tempore, iste culpa. Dignissimos commodi temporibus necessitatibus dicta eos.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas in similique asperiores magni nemo obcaecati quae consequatur eos ullam dolorem, fugiat ex vel rem exercitationem repudiandae sint itaque doloremque pariatur omnis voluptates laboriosam non. In eius voluptatum nemo mollitia eos.</p>
           </article>

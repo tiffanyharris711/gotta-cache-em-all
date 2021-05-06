@@ -8,11 +8,11 @@
 //         console.log(data.effect_entries[1].effect);
 //     });
 
-var queryUrl = '/api/v1.0/names'
-$.get(queryUrl)
-    .done(data => {
-        console.log(data);
-    });
+// var queryUrl = '/api/v1.0/names'
+// $.get(queryUrl)
+//     .done(data => {
+//         console.log(data);
+//     });
 
 // // get table references
 // var tbody = d3.select("tbody");

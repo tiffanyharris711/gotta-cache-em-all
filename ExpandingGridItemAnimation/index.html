@@ -49,19 +49,30 @@
 					<img src="pater/Pokeball.webp" class="pater__img" alt="Storyblocks"/>
 					<h3 class="pater__title">​Search for your Pokemon!</h3>
 					<p class="pater__desc">Enter in the Pokemon you want to find. <strong>Click to search! &rarr;</strong></p>
-					<div class="container-1">
-						<div class="center">
-						  <div class="col-md-12">
-							<form id="form">
+					<div class="col-md-2">
+						<aside class="filters">
+						  <div class="panel panel-default">
+							<div class="panel-body">
 							  <div class="form-group">
-								<label for="patient-form">Pokemon Search</label>
-								<input class="form-control" id="patient-form-input" name="patient-form" type="text" placeholder="Pikachu">
+								<ul class="list-group" id="filters">
+								  <li class="filter list-group-item">
+									<label for="characterid">Enter Character ID</label>
+									<input class="form-control" id="characterid" type="text" placeholder="Pikachu">
+								  </li>
+								  <li class="filter list-group-item">
+									<label for="formType">Select a Form Type</label>
+									<input class="form-control" id="formType" type="text" placeholder="Grass">
+								  </li>
+								  <li class="filter list-group-item">
+									<label for="state">Something Else Here</label>
+									<input class="form-control" id="state" type="text" placeholder="Something">
+								  </li>                    
+								</ul>
 							  </div>
-							  <!--<button id="button" type="button" class="btn btn-default">Enter</button> -->
-							</form>
+							</div>
 						  </div>
-						</div>
-					</div>
+						</aside>
+					  </div>
 				</header>
 				</a>
 
@@ -128,5 +139,6 @@
 		<script src="js/imagesloaded.pkgd.min.js"></script>
 		<script src="js/anime.min.js"></script>
 		<script src="js/main.js"></script>
+		<script src="js/logic.js"></script>
 	</body>
 </html>

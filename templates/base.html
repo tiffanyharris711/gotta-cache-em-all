@@ -82,7 +82,8 @@
                   <ul class="list-group" id="filters">
                     <li class="filter list-group-item">
                       <label for="characterid">Enter Character ID</label>
-                      <input class="form-control" id="characterid" type="text" placeholder="Pikachu">
+                        <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                      <!-- <input class="form-control" id="characterid" type="text" placeholder="Pikachu"> -->
                     </li>
                     <!-- <li class="filter list-group-item">
                       <label for="formType">Select a Form Type</label>

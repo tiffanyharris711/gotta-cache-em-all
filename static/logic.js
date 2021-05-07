@@ -1,9 +1,44 @@
-// var queryUrl = "https://pokeapi.co/api/v2/ability/1";
+//--------------get character image from API--------------//
+function getCharImage(pokecharID) {
+  var charImageStubURL = "https://pokeres.bastionbot.org/images/pokemon/";
+  var charImageURL = charImageStubURL + pokecharID + ".png";
 
-var queryUrl = "/api/v1/names";
+  d3.select("#character-image")
+    .append("img")
+    .attr("src", charImageURL)
+    .attr("width", "40%")
+    .attr("id", "char-image");
+}
+
+//--------------get character description from API--------------//
+function getCharDesc(pokecharID) {
+  var charDescStubURL = "https://pokeapi.co/api/v2/ability/";
+  var charDescURL = charDescStubURL + pokecharID;
+
+  d3.json(charDescURL)
+    .then((data) => {
+      var charDesc = data.effect_entries[1].effect;
+      d3.select('#character-description')
+        .append('div')
+        .attr('id', 'char-desc')
+        .append('p')
+        .text(charDesc);
+    })
+    .catch(function (error) {
+      var charDesc = "No description found for this Pokemon character.";
+      d3.select('#character-description')
+        .append('div')
+        .attr('id', 'char-desc')
+        .append('p')
+        .text(charDesc);
+    });  
+}
 
 function init() {
+  var queryUrl = "/api/v1/names";
   var selector = d3.select("#selDataset");
+
+  selector.html("");
 
   d3.json(queryUrl).then((data) => {
     var pokeList = data;
@@ -21,51 +56,29 @@ function init() {
     pokeNames.forEach((pokemon) => {
       selector.append("option").text(pokemon).property("value", pokemon);
     });
+
+    var firstID = 190
+    getCharDesc(firstID);
+    getCharImage(firstID);
   });
 }
 
-d3.selectAll("#selDataset").on("change", getData);
-
-function getData() {
+function optionChanged(pokecharID) {
   var dropdownMenu = d3.select("#selDataset");
   var pokechar_nameID = dropdownMenu.property("value");
-  var data = [];
   var values = pokechar_nameID.split("-");
-  var pokecharName = values[0];
   var pokecharID = values[1];
-  console.log(pokecharID);
-  // console.log(dataset);
 
-  //--------------get character description from API--------------//
+  //remove previous selection before rebuilding page
+  var img = d3.select("#char-image");
+  img.remove();
 
-  var charDescStubURL = "https://pokeapi.co/api/v2/ability/";
-  var charDescURL = charDescStubURL + pokecharID;
+  var p = d3.select("#char-desc");
+  p.remove();
 
-  d3.json(charDescURL).then((data) => {
-    var charDesc = data.effect_entries[1].effect;
-    console.log(charDesc);
-  })
-  .catch(function(error){
-    var charDesc = "No description found for this Pokemon character."  
-    console.log(error);
-  });
-
-
-  //--------------get character image from API--------------//
-
-  var charImageStubURL = "https://pokeres.bastionbot.org/images/pokemon/";
-  var charImageURL = charImageStubURL + pokecharID + '.png';
-//   console.log(charImageURL);
-  d3.select("#character-image")
-    .append('img')
-    .attr('src', charImageURL)
-    .attr('alt',' ')
-
-}
-
-function optionChanged(newSample) {
-  // Fetch new data each time a new sample is selected
-  // charDescription();
+  //update character image to match new selection
+  getCharImage(pokecharID);
+  getCharDesc(pokecharID);
 }
 
 init();

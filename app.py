@@ -3,7 +3,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-
+import flask_sqlalchemy
 from flask import Flask, jsonify, render_template
 from flask_bootstrap import Bootstrap
 

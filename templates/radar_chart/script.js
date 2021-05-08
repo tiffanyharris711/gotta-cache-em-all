@@ -7,6 +7,12 @@ var colorscale = d3.scale.category10();
 // Can we run a function to Pull Up Pokemon name?
 
 var LegendOptions = ['Pokemon Name'];
+// THIS WAS TAKEN FROM LOGIC.JS 
+//var queryUrl = '/api/v1/names'
+//d3.json(queryUrl)
+//.then(data => {
+//    console.log(data);
+//});
 
 //Data
 // NEED TO LOAD FUNCTION THAT CALLS IN POKEMON DATA
@@ -51,6 +57,7 @@ RadarChart.draw("#chart", d, mycfg);
 
 
 // Building the Legend
+// Do we need a legend?
 
 var svg = d3.select('#body')
     .selectAll('svg')

@@ -8,7 +8,9 @@ html {
 }
 
 
-
+p {
+  font-size: 20px;
+}
 body {
 
   background: repeating-linear-gradient(
@@ -90,6 +92,29 @@ body {
 }
 
 /* -----NAV END---- */
+
+/* ----CHART START---- */
+.graph-header {
+  /* Positioning */
+  margin-bottom: 33px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+
+  /* Typography */
+  font-size: 32px;
+  font-weight: bold;
+  color: rgb(30, 90, 139);;
+}
+
+.graph-content {
+  /* Box-model */
+  padding: 30px;
+
+  /* Positioning */
+  margin-top: 32px;
+
+  /* Visual */
+  background-color: #fff;
+}
 
 /* ----DESCRIPTION START---- */
 .description-header {

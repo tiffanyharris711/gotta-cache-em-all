@@ -17,30 +17,30 @@ var LegendOptions = ['Pokemon Name'];
 //Data
 // NEED TO LOAD FUNCTION THAT CALLS IN POKEMON DATA
 // THIS IS A COMMENTED OUT FUNCTION 
-// function getPokeBaseStats(PokecharID) {
-  //var queryUrl = '/api/v1/base_stats'
-  //var filteredData = []
-  //var typeList = []
-  //
+function getPokeBaseStats(PokecharID) {
+  var queryUrl = '/api/v1/base_stats';
+  var filteredData = [];
+  var typeList = [];
 
-  // d3.json(queryUrl).then(data) => {
-    //filteredData.push(data.filter(type => type[0] === testID))
-
-  //}
-//}
+ d3.json(queryUrl).then((d) => {
+  filteredData.push(data.filter(type => type[0] === testID));
+console.log(d);
+  })
+};
+getPokeBaseStats(25);
 
 //function = init () {
 
 //}
 
 // THIS IS Hard Coded Test Data
-var d = [
-          [
-            {axis:"Base Attack",value:100},
-            {axis:"Base Defense",value:200},
-            {axis:"Base Stamina",value:150},
-          ],
-        ];
+//var d = [
+//          [
+//            {axis:"Base Attack",value:100},
+//            {axis:"Base Defense",value:200},
+ //           {axis:"Base Stamina",value:150},
+ //         ],
+ //       ];
 
 //Options for the Radar chart, other than default
 var mycfg = {

@@ -10,12 +10,24 @@ var LegendOptions = ['Pokemon Name'];
 
 //Data
 // NEED TO LOAD FUNCTION THAT CALLS IN POKEMON DATA
-//var queryUrl = '/api/v1/base_stats'
+// THIS IS A COMMENTED OUT FUNCTION 
+// function getPokeBaseStats(PokecharID) {
+  //var queryUrl = '/api/v1/base_stats'
+  //var filteredData = []
+  //var typeList = []
+  //
+
+  // d3.json(queryUrl).then(data) => {
+    //filteredData.push(data.filter(type => type[0] === testID))
+
+  //}
+//}
+
 //function = init () {
 
 //}
 
-
+// THIS IS Hard Coded Test Data
 var d = [
           [
             {axis:"Base Attack",value:100},
@@ -33,12 +45,12 @@ var mycfg = {
   ExtraWidthX: 300
 }
 
-//Call function to draw the Radar chart
+// Draw Radar Graph
+
 RadarChart.draw("#chart", d, mycfg);
 
-////////////////////////////////////////////
-/////////// Initiate legend ////////////////
-////////////////////////////////////////////
+
+// Building the Legend
 
 var svg = d3.select('#body')
     .selectAll('svg')
@@ -46,7 +58,7 @@ var svg = d3.select('#body')
     .attr("width", w+300)
     .attr("height", h)
 
-//Create the title for the legend
+// Title of Legend 
 var text = svg.append("text")
     .attr("class", "title")
     .attr('transform', 'translate(90,0)') 
@@ -56,14 +68,14 @@ var text = svg.append("text")
     .attr("fill", "#404040")
     .text("Pokemon Base Statistics");
 
-//Initiate Legend   
+// Creates Legend
 var legend = svg.append("g")
     .attr("class", "legend")
     .attr("height", 100)
     .attr("width", 200)
     .attr('transform', 'translate(90,20)') 
     ;
-    //Create colour squares
+    // Creates Color Squares for Legend
     legend.selectAll('rect')
       .data(LegendOptions)
       .enter()
@@ -74,7 +86,7 @@ var legend = svg.append("g")
       .attr("height", 10)
       .style("fill", function(data, i){ return colorscale(i);})
       ;
-    //Create text next to squares
+    // Creates Legend Text
     legend.selectAll('text')
       .data(LegendOptions)
       .enter()

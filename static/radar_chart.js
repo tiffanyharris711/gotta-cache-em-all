@@ -106,7 +106,9 @@ var RadarChart = {
           .attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
           .attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
   
+  // Draw Polygons
   
+
       d.forEach(function(y, x){
         dataValues = [];
         g.selectAll(".nodes")

@@ -15,11 +15,7 @@ var RadarChart = {
        TranslateY: 30,
        ExtraWidthX: 100,
        ExtraWidthY: 100,
-<<<<<<< HEAD
-       color: d3.scale.category10()
-=======
        color: d3.scaleOrdinal(d3.schemeCategory10)
->>>>>>> 0aabdb850f844b51fe257b24609555396566a082
       };
   
       if('undefined' !== typeof options){
@@ -178,36 +174,20 @@ var RadarChart = {
           .on('mouseover', function (d){
                       newX =  parseFloat(d3.select(this).attr('cx')) - 10;
                       newY =  parseFloat(d3.select(this).attr('cy')) - 5;
-<<<<<<< HEAD
-  
-                      tooltip
-                          .attr('x', newX)
-                          .attr('y', newY)
-                          .text(Format(d.value))
-                          .transition(200)
-=======
                       
                       tooltip
                           .attr('x', newX)
                           .attr('y', newY)
                           .text(d.value)
                           .transition(50)
->>>>>>> 0aabdb850f844b51fe257b24609555396566a082
                           .style('opacity', 1);
   
                       z = "polygon."+d3.select(this).attr("class");
                       g.selectAll("polygon")
-<<<<<<< HEAD
                           .transition(200)
                           .style("fill-opacity", 0.1); 
                       g.selectAll(z)
                           .transition(200)
-=======
-                          .transition(50)
-                          .style("fill-opacity", 0.1); 
-                      g.selectAll(z)
-                          .transition(50)
->>>>>>> 0aabdb850f844b51fe257b24609555396566a082
                           .style("fill-opacity", .7);
                     })
           .on('mouseout', function(){

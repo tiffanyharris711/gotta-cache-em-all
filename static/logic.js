@@ -244,7 +244,7 @@ function optionChanged(pokecharID) {
 
 //--------------initial function to load the webpage, called at the very end--------------//
 function init() {
-  var queryUrl = "/api/v1/names";
+  var queryUrl = "/api/v1/description";
   var selector = d3.select("#selDataset");
 
   selector.html("");
@@ -253,7 +253,7 @@ function init() {
     var pokeList = data;
     var pokeAlpha = pokeList.sort();
     var pokeNames = [];
-
+    console.log(pokeList.length);
     for (var i = 0; i < pokeAlpha.length; i++) {
       var pokeID = pokeAlpha[i][0];
       var pokeName = pokeAlpha[i][1];
@@ -266,7 +266,7 @@ function init() {
       selector.append("option").text(pokemon).property("value", pokemon);
     });
 
-    var firstID = 460;
+    var firstID = 63;
     getCharDesc(firstID);
     getCharImage(firstID);
     getCharType(firstID);

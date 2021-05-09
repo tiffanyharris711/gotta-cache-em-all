@@ -174,20 +174,20 @@ var RadarChart = {
           .on('mouseover', function (d){
                       newX =  parseFloat(d3.select(this).attr('cx')) - 10;
                       newY =  parseFloat(d3.select(this).attr('cy')) - 5;
-  
+                      
                       tooltip
                           .attr('x', newX)
                           .attr('y', newY)
-                          .text(Format(d.value))
-                          .transition(200)
+                          .text(d.value)
+                          .transition(50)
                           .style('opacity', 1);
   
                       z = "polygon."+d3.select(this).attr("class");
                       g.selectAll("polygon")
-                          .transition(200)
+                          .transition(50)
                           .style("fill-opacity", 0.1); 
                       g.selectAll(z)
-                          .transition(200)
+                          .transition(50)
                           .style("fill-opacity", .7);
                     })
           .on('mouseout', function(){

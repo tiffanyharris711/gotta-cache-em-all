@@ -19,6 +19,7 @@ Pokemon_Fast_Move_Stats = Base.classes.pokemon_fast_move_stats
 Pokemon_Fast_Moves = Base.classes.pokemon_fast_moves
 Pokemon_Forms_Table = Base.classes.pokemon_forms
 Pokemon_Names_Table = Base.classes.pokemon_names
+Pokemon_Description_Table = Base.classes.pokemon_name_desc
 Pokemon_Types_Table = Base.classes.pokemon_types
 
 
@@ -75,6 +76,14 @@ def names():
     #Return a list of Pokemon Go Names
     session = Session(engine)    
     results = session.query(Pokemon_Names_Table.id, Pokemon_Names_Table.pokename).all()
+    return jsonify(results)
+
+@app.route("/api/v1/description")
+def description():
+
+    #Return a list of Pokemon Go Char Descriptions
+    session = Session(engine)    
+    results = session.query(Pokemon_Description_Table.id, Pokemon_Description_Table.pokename, Pokemon_Description_Table.url, Pokemon_Description_Table.desc).all()
     return jsonify(results)
 
 @app.route("/api/v1/types")

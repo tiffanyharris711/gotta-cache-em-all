@@ -10,7 +10,7 @@
 
     <!-- Bootstrap Stylesheet -->
     <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}" media="screen">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> -->
 
     <!-- Our own CSS stylesheet -->
     <link rel="stylesheet" href="{{url_for('.static', filename='styles.css')}}" media="screen">
@@ -34,17 +34,8 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right navbar-right-custom">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                 <li><a href="">Option 1</a></li>
-                  <li><a href="">Option 2</a></li>
-                  <li><a href="">Option 3</a></li>
-                  <li><a href="">Option 4</a></li>
-                </ul>
-              </li>
-              <li><a href="">Comparison</a></li>
-              <li><a href="">Data</a></li>
+              <li><a href=""></a></li>
+              <li><a href=""></a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div>
@@ -56,16 +47,15 @@
     <div class="container-fluid">
       <section class="row">
         <img class="col-md-8">
-          <!-- <img src="../images/title.png" class="center"> -->
           <img src="{{url_for('.static', filename='title.png')}}" class ='center'>
         </div>
       </section>
     </div>
     <!--End of title container-->
 
-    <!-- Start of container -->
     <div class="container-fluid">
       <section class="row">
+        <!--------Character selection dropdown--------->
         <div class="col-md-2">
           <aside class="filters">
             <div class="panel panel-default">
@@ -89,49 +79,65 @@
             </div>
           </aside>
         </div>
-
-        <div class="col-md-6">
+        <!--------Character image and description--------->
+        <div class="col-md-4">
           <article class="description-content">
-            <h1 class="description-header">Character Description</h1>
-            <hr class="description-hr"/>
-              <div id='character-image'></div>
-              <div id='character-description'></div>
+            <h1 class="description-header">Character Image</h1>
+              <hr class="description-hr"/>
+                <section id="imageNav-area">
+                  <div class="imageNav-content">
+                    <div id='character-image'></div>
+                  </div>
+                </section>
           </article>
         </div>
-        <div class="col-md-4">
-          <!-- Start of Visualizations imageNav Area -->
-          <section id="imageNav-area">
-            <div class="imageNav-content">
-              <h2 class="imageNav-header">Character Attributes</h2>
-              <hr />
-              <div id="images">
-                <h4 class="imageNav-header row">Types</h4>
-                <div id="character-type"></div>
-                <h4 class="imageNav-header row">Fast Moves</h4>
-                <div id="character-moves"></div>
-                <!-- <img src="{{url_for('.static', filename='from_bao.png')}}" width=75%> -->
-              </div>
-            </div>
-          </section>
-          <!-- End of the Visualizations imageNav Area -->
 
+        <div class="col-md-5">
+          <article class="description-content">
+            <h2 class="description-header">Character Description</h2>
+              <hr class="description-hr"/>
+                <section id="imageNav-area">
+                  <div class="imageNav-content">
+                    <div id='character-description'></div>
+                  </div>
+                </section>
+          </article>
         </div>
+
       </section>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <article class="graph-content">
-          <h1 class="graph-header">Radar Graph</h1>
+    <section class="row">
+      <div class="col-md-2"></div>
+      <!--------Character attributes: types and moves--------->
+      <div class="col-md-4">
+        <section id="imageNav-area">
+          <div class="imageNav-content">
+            <h2 class="description-header">Character Attributes</h2>
+            <hr />
+            <div id="images">
+              <div class='row'>
+                <div class="imageNav-header">Types</div>
+                  <div id="character-type"></div>
+              </div>
+              <div class="row">
+                <div class="imageNav-header">Fast Moves</div>
+                  <div id="character-moves"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!--------Radar graph--------->
+      <div class="col-md-5">
+        <section class="graph-content">
+          <h1 class="graph-header">Character Statistics</h1>
             <hr class="graph-hr"/>
-              <!-- <div id='radar-graph'></div>                 -->
               <div id="body">
                 <div id="chart"></div>
               </div>
-        </article>
+        </section>
       </div>
-    </div>
-    <!-- End of container -->
-    
+    </section>    
 
     <!-- Start of footer -->
     <footer class="footer navbar-fixed-bottom">

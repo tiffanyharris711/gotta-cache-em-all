@@ -89,6 +89,8 @@ function getCharType(pokecharID) {
   var int_pokeCharID = parseInt(pokecharID);
   let filteredData = [];
   let typeList = [];
+  var textColor = "navy";
+  var fillColor = "white";
   typeList.length = 0;
 
   d3.json(queryUrl).then((data) => {
@@ -98,16 +100,70 @@ function getCharType(pokecharID) {
       typeList.push(pokemon[1]);
     });
 
-    // console.log(int_pokeCharID);
-    // console.log(typeList);
-
     typeList.forEach((type) => {
+
+      switch(type) {
+        case "Bug":
+          fillColor = "lightpink";
+          break;
+        case "Dark":
+          fillColor = "indigo";
+          textColor = "white";
+          break;
+        case "Dragon":
+          fillColor = "green";
+          break;
+        case "Electric":
+          fillColor = "greenyellow";
+          break;
+        case "Grass":
+          fillColor = "lightgreen";
+          break;
+        case "Ice":
+          fillColor = "lightblue";
+          break;
+        case "Fairy":
+          fillColor = "orchid";
+          break;
+        case "Fighting":
+          fillColor = "indianred";
+          break;
+        case "Fire":
+          fillColor = "orange";
+          break;
+        case "Flying":
+          fillColor = "goldenrod";
+          break;
+        case "Normal":
+          fillColor = "yellow";
+          break;
+        case "Psychic":
+          fillColor = "magenta";
+          break;
+        case "Rock":
+          fillColor = "lightsalmon";
+          textColor = "white";
+          break;
+        case "Steel":
+          fillColor = "silver";
+          break;
+        case "Water":
+          fillColor = "mediumturquoise";
+          break;
+        default:
+          fillColor = "red";
+          textColor = "white";
+          break;
+      }
+
       d3.select("#character-type")
         .append("div")
         .attr("id", "char-type")
         .append("h4")
         .attr("class", "col-md-6 row")
-        .text(type);
+        .text(type)
+        .style("background-color", fillColor)
+        .style("color", textColor);
     });
   });
 }
@@ -120,6 +176,7 @@ function getCharMoves(pokecharID) {
   let filteredMoves = [];
   let moveList = [];
   moveList.length = 0;
+  var x = 0;
 
   d3.json(queryUrl).then((data) => {
     filteredMoves.push(data.filter((move) => move[0] === int_pokeCharID));
@@ -129,11 +186,29 @@ function getCharMoves(pokecharID) {
     });
 
     moveList.forEach((move) => {
+      
+      //----alternate fill colors with every other row, use modulus operator to determine even/odd----//
+      x = x + 1;
+
+      switch(x % 2) {
+        case 0:
+          fillColor = "springgreen";
+          textColor = "navy";
+          break;
+        default:
+          fillColor = "yellow";
+          textColor = "navy";
+          break;
+      }
+      
+      //----append character moves-----//
       d3.select("#character-moves")
         .append("h4")
         .attr("id", "char-move")
         .attr("class", "col-md-6 row")
-        .text(move);
+        .text(move)
+        .style("background-color", fillColor)
+        .style("color", textColor);
     });
   });
 }
@@ -162,8 +237,6 @@ function getBaseStats(pokecharID) {
 
     var colorscale = d3.scaleOrdinal(d3.schemeCategory10);
 
-    var LegendOptions = ["Pokemon Name"];
-
     var d = [
       [
         { axis: "Base Attack", value: base_attack },
@@ -185,66 +258,10 @@ function getBaseStats(pokecharID) {
 
     RadarChart.draw("#chart", d, mycfg);
 
-    // Building the Legend
-    var svg = d3
-      .select("#body")
-      .selectAll("svg")
-      .append("svg")
-      .attr("width", w + 300)
-      .attr("height", h);
-
-    // Title of Legend
-    var text = svg
-      .append("text")
-      .attr("class", "title")
-      .attr("transform", "translate(90,0)")
-      .attr("x", w - 70)
-      .attr("y", 10)
-      .attr("font-size", "12px")
-      .attr("fill", "#404040")
-      .text("Pokemon Base Statistics");
-
-    // Creates Legend
-    var legend = svg
-      .append("g")
-      .attr("class", "legend")
-      .attr("height", 100)
-      .attr("width", 200)
-      .attr("transform", "translate(90,20)");
-    // Creates Color Squares for Legend
-    legend
-      .selectAll("rect")
-      .data(LegendOptions)
-      .enter()
-      .append("rect")
-      .attr("x", w - 65)
-      .attr("y", function (data, i) {
-        return i * 20;
-      })
-      .attr("width", 10)
-      .attr("height", 10)
-      .style("fill", function (data, i) {
-        return colorscale(i);
-      });
-    // Creates Legend Text
-    legend
-      .selectAll("text")
-      .data(LegendOptions)
-      .enter()
-      .append("text")
-      .attr("x", w - 52)
-      .attr("y", function (d, i) {
-        return i * 20 + 9;
-      })
-      .attr("font-size", "11px")
-      .attr("fill", "#737373")
-      .text(function (d) {
-        return d;
-      });
   });
 
 
-}
+} //end graph
 
 //--------------clears the page and resets when the user chooses a different character--------------//
 function optionChanged(pokecharID) {
@@ -276,7 +293,7 @@ function optionChanged(pokecharID) {
 
 //--------------initial function to load the webpage, called at the very end--------------//
 function init() {
-  var queryUrl = "/api/v1/names";
+  var queryUrl = "/api/v1/description";
   var selector = d3.select("#selDataset");
 
   selector.html("");
@@ -285,7 +302,7 @@ function init() {
     var pokeList = data;
     var pokeAlpha = pokeList.sort();
     var pokeNames = [];
-
+    console.log(pokeList.length);
     for (var i = 0; i < pokeAlpha.length; i++) {
       var pokeID = pokeAlpha[i][0];
       var pokeName = pokeAlpha[i][1];
@@ -298,7 +315,7 @@ function init() {
       selector.append("option").text(pokemon).property("value", pokemon);
     });
 
-    var firstID = 460;
+    var firstID = 63;
     getCharDesc(firstID);
     getCharImage(firstID);
     getCharType(firstID);
@@ -307,4 +324,5 @@ function init() {
   });
 }
 
+//call initial function to build webpage
 init();

@@ -9,8 +9,10 @@ html {
 
 
 p {
-  font-size: 20px;
+  font-size: 16px;
 }
+
+/*----striped background----*/
 body {
 
   background: repeating-linear-gradient(
@@ -44,6 +46,7 @@ body {
 /* ----NAV START---- */
 .navbar-custom {
   background-color: rgb(30, 90, 139);
+  color: white;
   /* background-color: white; */
 }
 
@@ -60,7 +63,7 @@ body {
 
 /* Nav element hover state */
 .navbar-default .navbar-nav > li > a:hover {
-  color: #4aaaa5;
+  color: #96f3ee;
 }
 
 /* Media query for nav */

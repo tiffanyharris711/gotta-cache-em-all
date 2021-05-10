@@ -197,10 +197,11 @@ function getBaseStats(pokecharID) {
     ];
 
     // Overlay Polygons onto Chart
+    // ***Commented Out Not to Mess Up Existing Code***
 
 //     poly = [{axis: "Base Attack", value: base_attack },
 //            {axis: "Base Defense", value: base_defense},
-//            {axis: "Base Stamina", value: base_stamina },  
+//            {axis: "Base Stamina", value: base_stamina},  
 //         
 // vis.selectAll("polygon")
 //     .data([poly])

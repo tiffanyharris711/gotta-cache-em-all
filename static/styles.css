@@ -108,6 +108,18 @@ body {
   color: rgb(30, 90, 139);;
 }
 
+/* ------ Draw Polygons -------
+**Commented Out To Not Mess Up Existing Code**
+.area.[CLASS NAME], .germany .circle {
+  fill: #FFD700;
+  stroke: none;
+}
+.area.[CLASS NAME], .argentina .circle {
+  fill: #ADD8E6;
+  stroke: none;
+}
+*/
+
 .graph-content {
   /* Box-model */
   padding: 30px;

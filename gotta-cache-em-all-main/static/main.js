@@ -330,5 +330,5 @@
 
     DOM.details = new Details();
 
-    imagesLoaded(document.body, () => document.body.classList.remove('loading'));
+    // imagesLoaded(document.body, () => document.body.classList.remove('loading'));
 };

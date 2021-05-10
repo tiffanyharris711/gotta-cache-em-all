@@ -59,7 +59,7 @@ button:focus {
 }
 
 /* Page Loader */
-.js .loading::before,
+/* .js .loading::before,
 .js .loading::after {
 	content: '';
 	position: fixed;
@@ -83,7 +83,7 @@ button:focus {
 	to {
 		opacity: 1;
 	}
-}
+} */
 
 .hidden {
 	position: absolute;

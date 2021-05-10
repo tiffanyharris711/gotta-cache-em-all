@@ -109,102 +109,102 @@ var RadarChart = {
   // Draw Polygons
   
 
-      d.forEach(function(y, x){
-        dataValues = [];
-        g.selectAll(".nodes")
-          .data(y, function(j, i){
-            dataValues.push([
-              cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
-              cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
-            ]);
-          });
-        dataValues.push(dataValues[0]);
-        g.selectAll(".area")
-                       .data([dataValues])
-                       .enter()
-                       .append("polygon")
-                       .attr("class", "radar-chart-serie"+series)
-                       .style("stroke-width", "2px")
-                       .style("stroke", cfg.color(series))
-                       .attr("points",function(d) {
-                           var str="";
-                           for(var pti=0;pti<d.length;pti++){
-                               str=str+d[pti][0]+","+d[pti][2]+" ";
-                           }
-                           return str;
-                        })
-                       .style("fill", function(j, i){return cfg.color(series)})
-                       .style("fill-opacity", cfg.opacityArea)
-                       .on('mouseover', function (d){
-                                          z = "polygon."+d3.select(this).attr("class");
-                                          g.selectAll("polygon")
-                                           .transition(200)
-                                           .style("fill-opacity", 0.1); 
-                                          g.selectAll(z)
-                                           .transition(200)
-                                           .style("fill-opacity", .7);
-                                        })
-                       .on('mouseout', function(){
-                                          g.selectAll("polygon")
-                                           .transition(200)
-                                           .style("fill-opacity", cfg.opacityArea);
-                       });
-        series++;
-      });
-      series=0;
+      // d.forEach(function(y, x){
+      //   dataValues = [];
+      //   g.selectAll(".nodes")
+      //     .data(y, function(j, i){
+      //       dataValues.push([
+      //         cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
+      //         cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
+      //       ]);
+      //     });
+      //   dataValues.push(dataValues[0]);
+      //   g.selectAll(".area")
+      //                  .data([dataValues])
+      //                  .enter()
+      //                  .append("polygon")
+      //                  .attr("class", "radar-chart-serie"+series)
+      //                  .style("stroke-width", "2px")
+      //                  .style("stroke", cfg.color(series))
+      //                  .attr("points",function(d) {
+      //                      var str="";
+      //                      for(var pti=0;pti<d.length;pti++){
+      //                          str=str+d[pti][0]+","+d[pti][2]+" ";
+      //                      }
+      //                      return str;
+      //                   })
+      //                  .style("fill", function(j, i){return cfg.color(series)})
+      //                  .style("fill-opacity", cfg.opacityArea)
+      //                  .on('mouseover', function (d){
+      //                                     z = "polygon."+d3.select(this).attr("class");
+      //                                     g.selectAll("polygon")
+      //                                      .transition(200)
+      //                                      .style("fill-opacity", 0.1); 
+      //                                     g.selectAll(z)
+      //                                      .transition(200)
+      //                                      .style("fill-opacity", .7);
+      //                                   })
+      //                  .on('mouseout', function(){
+      //                                     g.selectAll("polygon")
+      //                                      .transition(200)
+      //                                      .style("fill-opacity", cfg.opacityArea);
+      //                  });
+      //   series++;
+      // });
+      // series=0;
   
   
-      d.forEach(function(y, x){
-        g.selectAll(".nodes")
-          .data(y).enter()
-          .append("svg:circle")
-          .attr("class", "radar-chart-serie"+series)
-          .attr('r', cfg.radius)
-          .attr("alt", function(j){return Math.max(j.value, 0)})
-          .attr("cx", function(j, i){
-            dataValues.push([
-              cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
-              cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
-          ]);
-          return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
-          })
-          .attr("cy", function(j, i){
-            return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
-          })
-          .attr("data-id", function(j){return j.axis})
-          .style("fill", cfg.color(series)).style("fill-opacity", .9)
-          .on('mouseover', function (d){
-                      newX =  parseFloat(d3.select(this).attr('cx')) - 10;
-                      newY =  parseFloat(d3.select(this).attr('cy')) - 5;
+      // d.forEach(function(y, x){
+      //   g.selectAll(".nodes")
+      //     .data(y).enter()
+      //     .append("svg:circle")
+      //     .attr("class", "radar-chart-serie"+series)
+      //     .attr('r', cfg.radius)
+      //     .attr("alt", function(j){return Math.max(j.value, 0)})
+      //     .attr("cx", function(j, i){
+      //       dataValues.push([
+      //         cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
+      //         cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
+      //     ]);
+      //     return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
+      //     })
+      //     .attr("cy", function(j, i){
+      //       return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
+      //     })
+      //     .attr("data-id", function(j){return j.axis})
+      //     .style("fill", cfg.color(series)).style("fill-opacity", .9)
+      //     .on('mouseover', function (d){
+      //                 newX =  parseFloat(d3.select(this).attr('cx')) - 10;
+      //                 newY =  parseFloat(d3.select(this).attr('cy')) - 5;
                       
-                      tooltip
-                          .attr('x', newX)
-                          .attr('y', newY)
-                          .text(d.value)
-                          .transition(50)
-                          .style('opacity', 1);
+      //                 tooltip
+      //                     .attr('x', newX)
+      //                     .attr('y', newY)
+      //                     .text(d.value)
+      //                     .transition(50)
+      //                     .style('opacity', 1);
   
-                      z = "polygon."+d3.select(this).attr("class");
-                      g.selectAll("polygon")
-                          .transition(200)
-                          .style("fill-opacity", 0.1); 
-                      g.selectAll(z)
-                          .transition(200)
-                          .style("fill-opacity", .7);
-                    })
-          .on('mouseout', function(){
-                      tooltip
-                          .transition(200)
-                          .style('opacity', 0);
-                      g.selectAll("polygon")
-                          .transition(200)
-                          .style("fill-opacity", cfg.opacityArea);
-                    })
-          .append("svg:title")
-          .text(function(j){return Math.max(j.value, 0)});
+      //                 z = "polygon."+d3.select(this).attr("class");
+      //                 g.selectAll("polygon")
+      //                     .transition(200)
+      //                     .style("fill-opacity", 0.1); 
+      //                 g.selectAll(z)
+      //                     .transition(200)
+      //                     .style("fill-opacity", .7);
+      //               })
+      //     .on('mouseout', function(){
+      //                 tooltip
+      //                     .transition(200)
+      //                     .style('opacity', 0);
+      //                 g.selectAll("polygon")
+      //                     .transition(200)
+      //                     .style("fill-opacity", cfg.opacityArea);
+      //               })
+      //     .append("svg:title")
+      //     .text(function(j){return Math.max(j.value, 0)});
   
-        series++;
-      });
+      //   series++;
+      // });
       // Tool Tip
       tooltip = g.append('text')
                  .style('opacity', 0)

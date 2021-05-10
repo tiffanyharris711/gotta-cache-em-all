@@ -198,21 +198,22 @@ function getBaseStats(pokecharID) {
 
     // Overlay Polygons onto Chart
     // ***Commented Out Not to Mess Up Existing Code***
+    // *** Tried running 
 
-//     poly = [{axis: "Base Attack", value: base_attack },
-//            {axis: "Base Defense", value: base_defense},
-//            {axis: "Base Stamina", value: base_stamina},  
-//         
-// vis.selectAll("polygon")
-//     .data([poly])
-//   .enter().append("polygon")
-//     .attr("points",function(d) { 
-//         return d.map(function(d) {
-//             return [scaleX(d.x),scaleY(d.y)].join(",");
-//         }).join(" ");
-//     })
-//     .attr("stroke","black")
-//     .attr("stroke-width",2);
+    poly = [{axis: "Base Attack", value: base_attack },
+           {axis: "Base Defense", value: base_defense},
+           {axis: "Base Stamina", value: base_stamina}],  
+        
+vis.selectAll("polygon")
+    .data([poly])
+  .enter().append("polygon")
+    .attr("points",function(d) { 
+        return d.map(function(d) {
+            return [scaleX(d.x),scaleY(d.y)].join(",");
+        }).join(" ");
+    })
+    .attr("stroke","black")
+    .attr("stroke-width", 2 );
 
     //Options for the Radar chart, other than default
     var mycfg = {

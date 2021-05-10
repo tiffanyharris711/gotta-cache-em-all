@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 import flask_sqlalchemy
 from flask import Flask, jsonify, render_template
 from flask_bootstrap import Bootstrap
+# from flask_marshmallow import Marshmallow
 
 engine = create_engine("sqlite:///Analysis/pokemonGo.sqlite")
 

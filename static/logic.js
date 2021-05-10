@@ -3,12 +3,17 @@ function getCharImage(pokecharID) {
   var charImageStubURL = "https://pokeres.bastionbot.org/images/pokemon/";
   var charImageURL = charImageStubURL + pokecharID + ".png";
 
-  d3.select("#character-image")
-    .append("img")
+  d3.select("#Pogo")
+    // .append("img")
     .attr("src", charImageURL)
-    .attr("width", "40%")
-    .attr("id", "char-image");
-  }
+    .attr("width", "50%")
+    // .attr("id", "char-image");
+
+  d3.select("#char-img")
+    .attr("src", charImageURL)
+    .attr("width", "250%")
+
+}
 
 //--------------get character description from API--------------//
 function getCharDesc(pokecharID) {
@@ -24,6 +29,7 @@ function getCharDesc(pokecharID) {
         .append("p")
         .text(charDesc);
     })
+   
     .catch(function (error) {
       var charDesc = "No description found for this Pokemon character.";
       d3.select("#character-description")
@@ -34,6 +40,55 @@ function getCharDesc(pokecharID) {
     });
 }
 
+//--------------get character info from API--------------//
+function getCharInfo(pokecharID) {
+  var charInfoStubURL = "https://pokeapi.co/api/v2/pokemon/";
+  var charInfoURL = charInfoStubURL + pokecharID;
+
+  d3.json(charInfoURL)
+    .then((data) => {
+      console.log('getcharinfo data',data)
+      var charDesc = data.name;
+      d3.select('.product__title')
+        //.append('div')
+        .attr('id', 'title')
+        //.append('p')
+        .text(charDesc);
+        // console.log('after pt')
+      d3.select('.product__subtitle')
+        .text("NO. " + pokecharID);
+      var types = ""
+      for (let type of data.types) {
+        // console.log("data", data.types)
+        let temp = "<li>"
+        temp += type.type.name
+        types += temp + "</li>"
+      }
+      d3.select('.product__price')  
+        .text("TYPE(s): <ul>"+ types+"</ul>")
+
+      //   charDescStubURL = "https://pokeapi.co/api/v2/characteristic/";
+      //   charDescURL = charDescStubURL + pokecharID;
+      
+      //   d3.json(charDescURL)
+      //     .then((data) => {
+      //       console.log("description", data)
+      //   d3.select('.product__description')
+      //     .text()
+
+      //   })
+
+        // Type(s): <ul><li>Electric</li><li>Fire</li></ul>
+    })
+    .catch(function (error) {
+      var charDesc = "No description found for this Pokemon character.";
+      d3.select('#character-description')
+        .append('div')
+        .attr('id', 'char-desc')
+        .append('p')
+        .text(charDesc);
+    });
+  }  
 //--------------get character type from API--------------//
 function getCharType(pokecharID) {
   var queryUrl = "/api/v1/types";
@@ -52,7 +107,8 @@ function getCharType(pokecharID) {
     });
 
     typeList.forEach((type) => {
-      switch (type) {
+
+      switch(type) {
         case "Bug":
           fillColor = "lightpink";
           break;
@@ -136,10 +192,11 @@ function getCharMoves(pokecharID) {
     });
 
     moveList.forEach((move) => {
+      
       //----alternate fill colors with every other row, use modulus operator to determine even/odd----//
       x = x + 1;
 
-      switch (x % 2) {
+      switch(x % 2) {
         case 0:
           fillColor = "springgreen";
           textColor = "navy";
@@ -149,7 +206,7 @@ function getCharMoves(pokecharID) {
           textColor = "navy";
           break;
       }
-
+      
       //----append character moves-----//
       d3.select("#character-moves")
         .append("h4")
@@ -206,7 +263,10 @@ function getBaseStats(pokecharID) {
     // Draw Radar Graph
 
     RadarChart.draw("#chart", d, mycfg);
+
   });
+
+
 } //end graph
 
 //--------------clears the page and resets when the user chooses a different character--------------//
@@ -229,9 +289,12 @@ function optionChanged(pokecharID) {
   var move = d3.selectAll("#char-move");
   move.remove();
 
+  var title = d3.selectAll("title");
+  title.remove();
   //update character image to match new selection
   getCharImage(pokecharID);
   getCharDesc(pokecharID);
+  getCharInfo(pokecharID);
   getCharType(pokecharID);
   getCharMoves(pokecharID);
   getBaseStats(pokecharID);
@@ -248,7 +311,7 @@ function init() {
     var pokeList = data;
     var pokeAlpha = pokeList.sort();
     var pokeNames = [];
-    
+    console.log(pokeList.length);
     for (var i = 0; i < pokeAlpha.length; i++) {
       var pokeID = pokeAlpha[i][0];
       var pokeName = pokeAlpha[i][1];

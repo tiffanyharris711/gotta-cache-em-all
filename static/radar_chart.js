@@ -107,7 +107,7 @@ var RadarChart = {
           .attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
   
   // Draw Polygons
-  
+  // This was the original polygon function. It is (obviously) not working.
 
       // d.forEach(function(y, x){
       //   dataValues = [];

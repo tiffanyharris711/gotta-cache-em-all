@@ -198,22 +198,34 @@ function getBaseStats(pokecharID) {
 
     // Overlay Polygons onto Chart
     // ***Commented Out Not to Mess Up Existing Code***
-    // *** Tried running 
+    // ----------------
+    // ATTEMPT # 1
+  
+    var area = d3.svg.area.radial()
+    .interpolate("cardinal-closed")
+    .angle(function(d) { return angle(d.time); })
+    .innerRadius(function(d) { return radius(d.y0); })
+    .outerRadius(function(d) { return radius(d.y0 + d.y); });
+    
 
-    poly = [{axis: "Base Attack", value: base_attack },
-           {axis: "Base Defense", value: base_defense},
-           {axis: "Base Stamina", value: base_stamina}],  
+    // --------
+    // ATTEMPT #2 
+    // *** Tried running Below -- No Luck
+
+//     poly = [{axis: "Base Attack", value: base_attack },
+//            {axis: "Base Defense", value: base_defense},
+//            {axis: "Base Stamina", value: base_stamina}],  
         
-vis.selectAll("polygon")
-    .data([poly])
-  .enter().append("polygon")
-    .attr("points",function(d) { 
-        return d.map(function(d) {
-            return [scaleX(d.x),scaleY(d.y)].join(",");
-        }).join(" ");
-    })
-    .attr("stroke","black")
-    .attr("stroke-width", 2 );
+// vis.selectAll("polygon")
+//     .data([poly])
+//   .enter().append("polygon")
+//     .attr("points",function(d) { 
+//         return d.map(function(d) {
+//             return [scaleX(d.x),scaleY(d.y)].join(",");
+//         }).join(" ");
+//     })
+//     .attr("stroke","black")
+//     .attr("stroke-width", 2 );
 
     //Options for the Radar chart, other than default
     var mycfg = {
@@ -223,6 +235,13 @@ vis.selectAll("polygon")
       levels: 6,
       ExtraWidthX: 300,
     };
+
+    // Build Tooltip
+
+    tooltip = g.append('text')
+                 .style('opacity', 0)
+                 .style('font-family', 'sans-serif')
+                 .style('font-size', '18px');
 
     // Draw Radar Graph
 

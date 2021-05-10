@@ -153,11 +153,11 @@ main {
 }
 
 .grid {
-	margin: 10em auto 7em;
+	margin: 0;
 	position: relative;
 	padding: 0 1em;
 	width: 100%;
-	max-width: 1000px;
+	max-width: 500px;
 	display: grid;
 	grid-template-columns: repeat(var(--grid-columns), 1fr);
 }
@@ -190,7 +190,7 @@ main {
 	display: block;
 	position: absolute;
 	top: 0;
-	left: 50%;
+	left: 25%;
 	pointer-events: none;
 	transform: translate3d(-50%,0,0);
 }

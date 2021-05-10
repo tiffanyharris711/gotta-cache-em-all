@@ -11,7 +11,7 @@ function getCharImage(pokecharID) {
 
   d3.select("#char-img")
     .attr("src", charImageURL)
-    .attr("width", "150%")
+    .attr("width", "250%")
 
 }
 
@@ -29,6 +29,7 @@ function getCharDesc(pokecharID) {
         .append("p")
         .text(charDesc);
     })
+   
     .catch(function (error) {
       var charDesc = "No description found for this Pokemon character.";
       d3.select("#character-description")
@@ -39,6 +40,55 @@ function getCharDesc(pokecharID) {
     });
 }
 
+//--------------get character info from API--------------//
+function getCharInfo(pokecharID) {
+  var charInfoStubURL = "https://pokeapi.co/api/v2/pokemon/";
+  var charInfoURL = charInfoStubURL + pokecharID;
+
+  d3.json(charInfoURL)
+    .then((data) => {
+      console.log('getcharinfo data',data)
+      var charDesc = data.name;
+      d3.select('.product__title')
+        //.append('div')
+        .attr('id', 'title')
+        //.append('p')
+        .text(charDesc);
+        // console.log('after pt')
+      d3.select('.product__subtitle')
+        .text("NO. " + pokecharID);
+      var types = ""
+      for (let type of data.types) {
+        // console.log("data", data.types)
+        let temp = "<li>"
+        temp += type.type.name
+        types += temp + "</li>"
+      }
+      d3.select('.product__price')  
+        .text("TYPE(s): <ul>"+ types+"</ul>")
+
+      //   charDescStubURL = "https://pokeapi.co/api/v2/characteristic/";
+      //   charDescURL = charDescStubURL + pokecharID;
+      
+      //   d3.json(charDescURL)
+      //     .then((data) => {
+      //       console.log("description", data)
+      //   d3.select('.product__description')
+      //     .text()
+
+      //   })
+
+        // Type(s): <ul><li>Electric</li><li>Fire</li></ul>
+    })
+    .catch(function (error) {
+      var charDesc = "No description found for this Pokemon character.";
+      d3.select('#character-description')
+        .append('div')
+        .attr('id', 'char-desc')
+        .append('p')
+        .text(charDesc);
+    });
+  }  
 //--------------get character type from API--------------//
 function getCharType(pokecharID) {
   var queryUrl = "/api/v1/types";
@@ -239,9 +289,12 @@ function optionChanged(pokecharID) {
   var move = d3.selectAll("#char-move");
   move.remove();
 
+  var title = d3.selectAll("title");
+  title.remove();
   //update character image to match new selection
   getCharImage(pokecharID);
   getCharDesc(pokecharID);
+  getCharInfo(pokecharID);
   getCharType(pokecharID);
   getCharMoves(pokecharID);
   getBaseStats(pokecharID);

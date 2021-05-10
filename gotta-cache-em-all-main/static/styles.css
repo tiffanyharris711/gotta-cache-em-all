@@ -14,15 +14,7 @@ p {
 
 /*----striped background----*/
 body {
-
-  background: repeating-linear-gradient(
-    45deg,
-  #f8f8e9,
-  #eede05 15px,
-  rgb(30, 90, 139) 5px,
-  #f8f8e9 20px
-  );
-
+  background: no-repeat url("./pexels-photo-949587.jpeg");
 }
 
 .center {
@@ -100,6 +92,7 @@ body {
 .graph-header {
   /* Positioning */
   margin-bottom: 33px;
+  padding: 1em;
   font-family: Georgia, Times, "Times New Roman", serif;
 
   /* Typography */
@@ -110,13 +103,12 @@ body {
 
 .graph-content {
   /* Box-model */
-  padding: 30px;
+  padding: 0px 25px 30px -35px;
 
   /* Positioning */
-  margin-top: 32px;
-
+  margin-top: -350px;
   /* Visual */
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.904);
 }
 
 /* ----DESCRIPTION START---- */
@@ -139,7 +131,7 @@ body {
   margin-top: 32px;
 
   /* Visual */
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.904);
 }
 
 .description-content > p {
@@ -193,7 +185,7 @@ body {
   margin-top: 32px;
 
   /* Visual */
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.904);
 }
 
 .imageNav-header {

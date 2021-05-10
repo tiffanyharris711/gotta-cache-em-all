@@ -111,10 +111,10 @@ body {
 
 .graph-content {
   /* Box-model */
-  padding: 30px;
+  padding: 15px;
 
   /* Positioning */
-  margin-top: 32px;
+  margin-top: 16px;
 
   /* Visual */
   background-color: #fff;
@@ -126,6 +126,7 @@ body {
   margin-bottom: 33px;
   font-family: Georgia, Times, "Times New Roman", serif;
 
+
   /* Typography */
   font-size: 32px;
   font-weight: bold;
@@ -134,7 +135,8 @@ body {
 
 .description-content {
   /* Box-model */
-  padding: 30px;
+  padding-right: 350px;
+  padding-left: 0px;
 
   /* Positioning */
   margin-top: 32px;

@@ -5,16 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="shortcut icon" href="#">
     <title>Pokemon Go Visualization Dashboard</title>
 
-    <!-- Boostrap Stylesheet -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" media="screen">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css"> -->
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="static/bootstrap.min.css" media="screen">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
     <!-- Our own CSS stylesheet -->
-    <link rel="stylesheet" href="../assets/css/styles.css" media="screen">
+    <link rel="stylesheet" href="static/styles.css" media="screen">
   </head>
 
   <body>
@@ -61,7 +60,8 @@
     <div class="container-fluid">
       <section class="row">
         <img class="col-md-8">
-          <img src="../images/title.png" class="center">
+          <!-- <img src="../images/title.png" class="center"> -->
+          <img src="{{url_for('.static', filename='title.png')}}" class ='center'>
         </div>
       </section>
     </div>
@@ -78,17 +78,9 @@
                 <div class="form-group">
                   <ul class="list-group" id="filters">
                     <li class="filter list-group-item">
-                      <label for="characterid">Enter Character ID</label>
-                      <input class="form-control" id="characterid" type="text" placeholder="Pikachu">
+                      <label for="characterid">Select a Character</label>
+                      <select id="selDataset" onchange="optionChanged(this.value)"></select>
                     </li>
-                    <li class="filter list-group-item">
-                      <label for="formType">Select a Form Type</label>
-                      <input class="form-control" id="formType" type="text" placeholder="Grass">
-                    </li>
-                    <li class="filter list-group-item">
-                      <label for="state">Something Else Here</label>
-                      <input class="form-control" id="state" type="text" placeholder="Something">
-                    </li>                    
                   </ul>
                 </div>
               </div>
@@ -100,10 +92,13 @@
           <article class="description-content">
             <h1 class="description-header">Character Description</h1>
             <hr class="description-hr"/>
-            <script src="./anime-master/lib/anime.min.js"></script>
-            <img src="https://pokeres.bastionbot.org/images/pokemon/25.png" alt="" id="description-image"/>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis repellat illo pariatur possimus fugiat? Ipsum fugit iure, aspernatur quidem ipsam libero exercitationem consequuntur asperiores at quod cupiditate illum vitae, delectus commodi tempore, iste culpa. Dignissimos commodi temporibus necessitatibus dicta eos.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas in similique asperiores magni nemo obcaecati quae consequatur eos ullam dolorem, fugiat ex vel rem exercitationem repudiandae sint itaque doloremque pariatur omnis voluptates laboriosam non. In eius voluptatum nemo mollitia eos.</p>
+              <div id='character-image'>
+                <!-- <img src="https://pokeres.bastionbot.org/images/pokemon/25.png" alt="" id="description-image"/> -->
+              </div>
+              <div id='character-description'>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis repellat illo pariatur possimus fugiat? Ipsum fugit iure, aspernatur quidem ipsam libero exercitationem consequuntur asperiores at quod cupiditate illum vitae, delectus commodi tempore, iste culpa. Dignissimos commodi temporibus necessitatibus dicta eos.</p> -->
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas in similique asperiores magni nemo obcaecati quae consequatur eos ullam dolorem, fugiat ex vel rem exercitationem repudiandae sint itaque doloremque pariatur omnis voluptates laboriosam non. In eius voluptatum nemo mollitia eos.</p> -->
+              </div>
           </article>
         </div>
         <div class="col-md-4">
@@ -114,7 +109,8 @@
               <h2 class="imageNav-header">Graph Here</h2>
               <hr />
               <div id="images">
-                <img src="../images/from_bao.png" width=75%> 
+                <!-- <img src="../images/from_bao.png" width=75%>  -->
+                <img src="{{url_for('.static', filename='from_bao.png')}}" width=75%>
               </div>
             </div>
           </section>
@@ -140,7 +136,9 @@
 
     <!-- Bootstrap CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../assets/js/logic.js"></script>
+    <!-- <script type="text/javascript" src="./assets/js/logic.js"></script> -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script type="text/javascript" src="{{url_for('.static',filename='logic.js')}}"></script>
   </body>
 
 </html>

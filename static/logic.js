@@ -196,12 +196,6 @@ function getBaseStats(pokecharID) {
       ],
     ];
 
-     // Path to SVG 
-  svg.append("path")
-  .attr("stroke", "black")
-  .attr("stroke-width", "1")
-  .attr("fill", "none")
-  .attr("d", createLine(base_attack));
 
     // Overlay Polygons onto Chart
     // ***Commented Out Not to Mess Up Existing Code***

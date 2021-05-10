@@ -99,7 +99,9 @@ body {
 /* ----CHART START---- */
 .graph-header {
   /* Positioning */
-  margin-bottom: 33px;
+  float: left;
+  margin-right: 10px;
+  
   font-family: Georgia, Times, "Times New Roman", serif;
 
   /* Typography */
@@ -111,7 +113,7 @@ body {
 
 .graph-content {
   /* Box-model */
-  padding: 15px;
+  padding: 0px;
 
   /* Positioning */
   margin-top: 16px;

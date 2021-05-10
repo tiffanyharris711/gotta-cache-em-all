@@ -57,7 +57,7 @@ function getCharImage(pokecharID) {
     .attr("src", charImageURL)
     .attr("width", "40%")
     .attr("id", "char-image");
-}
+  }
 
 //--------------get character description from API--------------//
 function getCharDesc(pokecharID) {
@@ -101,8 +101,7 @@ function getCharType(pokecharID) {
     });
 
     typeList.forEach((type) => {
-
-      switch(type) {
+      switch (type) {
         case "Bug":
           fillColor = "lightpink";
           break;
@@ -186,11 +185,10 @@ function getCharMoves(pokecharID) {
     });
 
     moveList.forEach((move) => {
-      
       //----alternate fill colors with every other row, use modulus operator to determine even/odd----//
       x = x + 1;
 
-      switch(x % 2) {
+      switch (x % 2) {
         case 0:
           fillColor = "springgreen";
           textColor = "navy";
@@ -200,7 +198,7 @@ function getCharMoves(pokecharID) {
           textColor = "navy";
           break;
       }
-      
+
       //----append character moves-----//
       d3.select("#character-moves")
         .append("h4")
@@ -257,10 +255,7 @@ function getBaseStats(pokecharID) {
     // Draw Radar Graph
 
     RadarChart.draw("#chart", d, mycfg);
-
   });
-
-
 } //end graph
 
 //--------------clears the page and resets when the user chooses a different character--------------//
@@ -302,7 +297,7 @@ function init() {
     var pokeList = data;
     var pokeAlpha = pokeList.sort();
     var pokeNames = [];
-    console.log(pokeList.length);
+    
     for (var i = 0; i < pokeAlpha.length; i++) {
       var pokeID = pokeAlpha[i][0];
       var pokeName = pokeAlpha[i][1];

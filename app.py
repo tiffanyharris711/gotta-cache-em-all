@@ -7,7 +7,7 @@ import flask_sqlalchemy
 from flask import Flask, jsonify, render_template
 from flask_bootstrap import Bootstrap
 
-engine = create_engine("sqlite:///pokemonGo.sqlite")
+engine = create_engine("sqlite:///Analysis/pokemonGo.sqlite")
 
 Base = automap_base()
 

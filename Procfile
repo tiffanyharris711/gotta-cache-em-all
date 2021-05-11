@@ -1,1 +1,1 @@
-web: gunicorn gotta-cache-em-all.app:app
+web: gunicorn app:app

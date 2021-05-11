@@ -4,10 +4,8 @@ function getCharImage(pokecharID) {
   var charImageURL = charImageStubURL + pokecharID + ".png";
 
   d3.select("#Pogo")
-    // .append("img")
     .attr("src", charImageURL)
     .attr("width", "50%")
-    // .attr("id", "char-image");
 
   d3.select("#char-img")
     .attr("src", charImageURL)
@@ -50,16 +48,12 @@ function getCharInfo(pokecharID) {
       console.log('getcharinfo data',data)
       var charDesc = data.name;
       d3.select('.product__title')
-        //.append('div')
         .attr('id', 'title')
-        //.append('p')
         .text(charDesc);
-        // console.log('after pt')
       d3.select('.product__subtitle')
         .text("NO. " + pokecharID);
       var types = ""
       for (let type of data.types) {
-        // console.log("data", data.types)
         let temp = "<li>"
         temp += type.type.name
         types += temp + "</li>"
@@ -67,18 +61,6 @@ function getCharInfo(pokecharID) {
       d3.select('.product__price')  
         .text("TYPE(s): <ul>"+ types+"</ul>")
 
-      //   charDescStubURL = "https://pokeapi.co/api/v2/characteristic/";
-      //   charDescURL = charDescStubURL + pokecharID;
-      
-      //   d3.json(charDescURL)
-      //     .then((data) => {
-      //       console.log("description", data)
-      //   d3.select('.product__description')
-      //     .text()
-
-      //   })
-
-        // Type(s): <ul><li>Electric</li><li>Fire</li></ul>
     })
     .catch(function (error) {
       var charDesc = "No description found for this Pokemon character.";

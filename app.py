@@ -6,9 +6,8 @@ from sqlalchemy import create_engine
 import flask_sqlalchemy
 from flask import Flask, jsonify, render_template
 from flask_bootstrap import Bootstrap
-# from flask_marshmallow import Marshmallow
 
-engine = create_engine("sqlite:///Analysis/pokemonGo.sqlite")
+engine = create_engine("sqlite:///pokemonGo.sqlite")
 
 Base = automap_base()
 
@@ -23,10 +22,8 @@ Pokemon_Names_Table = Base.classes.pokemon_names
 Pokemon_Description_Table = Base.classes.pokemon_name_desc
 Pokemon_Types_Table = Base.classes.pokemon_types
 
-
 app = Flask(__name__)
 Bootstrap(app)
-# ma = Marshmallow(app)
 
 @app.route("/")
 def index():

@@ -30,7 +30,7 @@ Pokemon Go character data was collected from an API using Python. The ETL proces
 
 <br>Once the data frames were properly constructed and the data was cleaned, the Python sqlite library was employed to insert the dataframes into SQL database tables. To effectively executive the entire Python file multiple times (for debugging) without error, try/except statements were incorporated as well as DROPTABLE prior to CREATE TABLE statements. <br>
 ![sql](images/sqlLite.jpg)<br>
-![conn](images/conn.jpg)<br>
+![conn](images/Conn.jpg)<br>
 
 #### Scripts, Functions and Behind the Scenes
 <br>All Pokemon characters are assigned universal Pokemon character ID numbers. This made joining the data sources much easier than trying to identify and match on each character's name. Character images were retrieved using a static url with the Pokemon ID concatenated at the end of the url. <br>

@@ -7,6 +7,9 @@
 * Tom Munson
 * Tiffany Harris
 
+### Deployed Website:
+[https://pokemon-go-smu.herokuapp.com/](https://pokemon-go-smu.herokuapp.com/)
+
 #### Introduction
 Pokemon (also known as Pocket Monsters in Japan) is a children’s video game based in a fictional world where humans coexist alongside supernatural animals called “Pokemon”. Since the company’s inception in 1995, there have been nearly 900 Pokemon created, all with varying levels of rarity and battle ability. Our goal is to gather and organize a cohesive database of Pokemon statistics, encapsulating all 898 Pokemon.<br><br>
 
@@ -100,3 +103,12 @@ Pokemon Go character data was collected from an API using Python. The ETL proces
 * Final Presentation
     * Software platforms: Original built in Microsoft PowerPoint
     Files: [Presentation.pdf](Presentation.pdf)
+
+
+
+## Contact Information
+* Tiffany Harris
+* Mobile: 704-352-4094
+* Email: [tiffanyaharris711@gmail.com](mailto:tiffanyaharris711@gmail.com)
+* LinkedIn: [https://www.linkedin.com/in/tiffany-harris-analyst/](https://www.linkedin.com/in/tiffany-harris-analyst/)
+* Deployed website: [https://pokemon-go-smu.herokuapp.com/](https://pokemon-go-smu.herokuapp.com/)
